@@ -1,0 +1,16 @@
+select 
+
+case when t1.consenso_dmp is null then false else t1.consenso_dmp end as consenso_dmp,
+case when t1.consenso_trattamento_gedi is null then false else t1.consenso_trattamento_gedi end as consenso_trattamento_gedi,
+case when t1.consenso_terze_parti is null then false else t1.consenso_terze_parti end as consenso_terze_parti,
+
+count(distinct t1.id_gigya),
+
+
+from `gd-gcp-prd-dp-lake-2-0.gd_gcp_prd_dp_lake_2_bq_0.gigya_new_ana_anagrafica_snp` t1
+
+inner join `gd-gcp-prd-dp-lake-2-0.gd_gcp_prd_dp_lake_2_bq_0.gigya_new_ana_anag_servizi_snp` t2 on t1.id_gigya=t2.id_gigya
+
+where lower(idservizio) like '%post%'
+
+group by 1,2,3
