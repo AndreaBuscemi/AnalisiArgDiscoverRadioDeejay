@@ -1,5 +1,0 @@
-select count(distinct id_gigya) 
-from `gd-gcp-prd-dp-lake-2-0.gd_gcp_prd_dp_lake_2_bq_0.gigya_new_ana_anag_servizi_snp`
-where lower(idservizio) like '%deejay%';
-
-select count(distinct id_gigya) from 
